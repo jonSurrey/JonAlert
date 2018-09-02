@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		74D740BE213C44CB00D6DDC2 /* JonAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D740BC213C44CB00D6DDC2 /* JonAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74D740C5213C45F400D6DDC2 /* JonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D740C4213C45F400D6DDC2 /* JonAlert.swift */; };
+		74D740C9213C464700D6DDC2 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D740C7213C460600D6DDC2 /* UIView+Utils.swift */; };
+		74D740CA213C464A00D6DDC2 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D740C8213C460600D6DDC2 /* UIColor+Utils.swift */; };
+		74D740CC213C473800D6DDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D740CB213C473700D6DDC2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74D740B9213C44CB00D6DDC2 /* JonAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JonAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D740BC213C44CB00D6DDC2 /* JonAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JonAlert.h; sourceTree = "<group>"; };
 		74D740BD213C44CB00D6DDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74D740C4213C45F400D6DDC2 /* JonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JonAlert.swift; sourceTree = "<group>"; };
+		74D740C7213C460600D6DDC2 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		74D740C8213C460600D6DDC2 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		74D740CB213C473700D6DDC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +54,22 @@
 		74D740BB213C44CB00D6DDC2 /* JonAlert */ = {
 			isa = PBXGroup;
 			children = (
+				74D740C6213C460600D6DDC2 /* Extension */,
+				74D740C4213C45F400D6DDC2 /* JonAlert.swift */,
 				74D740BC213C44CB00D6DDC2 /* JonAlert.h */,
 				74D740BD213C44CB00D6DDC2 /* Info.plist */,
+				74D740CB213C473700D6DDC2 /* Assets.xcassets */,
 			);
 			path = JonAlert;
+			sourceTree = "<group>";
+		};
+		74D740C6213C460600D6DDC2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				74D740C7213C460600D6DDC2 /* UIView+Utils.swift */,
+				74D740C8213C460600D6DDC2 /* UIColor+Utils.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +115,7 @@
 				TargetAttributes = {
 					74D740B8213C44CB00D6DDC2 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D740CC213C473800D6DDC2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D740CA213C464A00D6DDC2 /* UIColor+Utils.swift in Sources */,
+				74D740C9213C464700D6DDC2 /* UIView+Utils.swift in Sources */,
+				74D740C5213C45F400D6DDC2 /* JonAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +278,7 @@
 		74D740C2213C44CB00D6DDC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +292,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.surrey.JonAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +301,7 @@
 		74D740C3213C44CB00D6DDC2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
