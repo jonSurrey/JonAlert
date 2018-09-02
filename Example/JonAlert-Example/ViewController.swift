@@ -11,6 +11,7 @@ import JonAlert
 
 class ViewController: UIViewController {
 
+    /// Button to perfom the action "showAlert"
     private let button1:UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
@@ -19,6 +20,7 @@ class ViewController: UIViewController {
         return button
     }()
     
+    /// Button to perfom the action "showCustomAlert"
     private let button2:UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
@@ -27,6 +29,7 @@ class ViewController: UIViewController {
         return button
     }()
     
+    /// Button to perfom the action "showSuccessAlert"
     private let button3:UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
@@ -35,6 +38,7 @@ class ViewController: UIViewController {
         return button
     }()
     
+    /// Button to perfom the action "showErrorAlert"
     private let button4:UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
@@ -53,6 +57,7 @@ class ViewController: UIViewController {
         button4.addTarget(self, action: #selector(showErrorAlert)   , for: .touchUpInside)
     }
     
+    /// Adds the buttons to the view and sets the constraints to them
     private func setupConstraints(){
         self.view.backgroundColor = .white
         
@@ -84,18 +89,22 @@ class ViewController: UIViewController {
         ])
     }
     
+    /// Displays a the alert with only a message
     @objc private func showAlert(){
         JonAlert.show(message: "Displaying simple message...")
     }
     
+    /// Dispplays the alert with a message and a custom icon
     @objc private func showCustomAlert(){
         JonAlert.show(message:  "Displaying custom alert...", andIcon: UIImage(named:"icon_favorite"))
     }
     
+    /// Displays the alert with a message and an icon of success
     @objc private func showSuccessAlert(){
         JonAlert.showSuccess(message: "Displaying success alert...")
     }
     
+    /// Displays the alert with a message and an icon of error
     @objc private func showErrorAlert(){
         JonAlert.showError(message: "Displaying error alert...")
     }
