@@ -8,11 +8,11 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Jonathan Martins" => "jon.martinsu@gamil.com" }
   s.platform     = :ios
-  s.ios.deployment_target = "11.0"
-  s.source       = { :git => "https://github.com/jonSurrey/JonAlert.git", :tag => "1.0.0"}
+  s.ios.deployment_target = "9.0"
+  s.source       = { :git => "https://github.com/jonSurrey/JonAlert.git", :tag => "#{s.version}"}
   s.source_files  = "JonAlert/JonAlert/**/*.{swift}"
 s.swift_version = "4.0" 
-s.resources = "JonAlert/JonAlert/Assets.xcassets/**/*.png"
+s.resources = "JonAlert/JonAlert/*.xcassets"
 s.requires_arc = true
 
 
