@@ -1,5 +1,6 @@
 JonAlert
 ===========
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-1.0.0-red.svg)](https://cocoapods.org/pods/JonAlert)
 
 A simple and elegant alert like Spotify's one, written in Swift. JonAlert can be used to give feedbacks to the user after he/she performed some action.
 
