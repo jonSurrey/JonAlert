@@ -1,11 +1,11 @@
 JonAlert
 ===========
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-1.0.0-red.svg)](https://cocoapods.org/pods/JonAlert)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jonSurrey/JonAlert/blob/master/LICENSE)
 
 A simple and elegant alert like Spotify's one, written in Swift. JonAlert can be used to give feedbacks to the user after he/she performed some action.
 
-![BackgroundImage](https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_single_message.png)
-![BackgroundImage](https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_success.png)
-![BackgroundImage](https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_error.png)
+![Gif](https://thumbs.gfycat.com/MilkyCompleteIberianbarbel-small.gif)
 
 Easy to use
 ----
@@ -51,7 +51,21 @@ JonAlert.show(message: "", duration: 5.0)
 Installation
 ---
 
-JonAlert is not available through Cocoapods yet, but will be soon. 
+### CocoaPods
+
+To integrate JonAlert into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+target '<Your Target Name>' do
+    pod 'JonAlert', '~> 1.0'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
 
 ### Manual installation
 
