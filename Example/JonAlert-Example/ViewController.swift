@@ -8,8 +8,9 @@
 
 import UIKit
 import JonAlert
+import Foundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
 
     /// Button to perfom the action "showAlert"
     private let button1:UIButton = {
@@ -50,11 +51,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        
-        button1.addTarget(self, action: #selector(showAlert)        , for: .touchUpInside)
-        button2.addTarget(self, action: #selector(showCustomAlert)  , for: .touchUpInside)
-        button3.addTarget(self, action: #selector(showSuccessAlert) , for: .touchUpInside)
-        button4.addTarget(self, action: #selector(showErrorAlert)   , for: .touchUpInside)
+
+        button1.addTarget(self, action: #selector(showAlert)       , for: .touchUpInside)
+        button2.addTarget(self, action: #selector(showCustomAlert) , for: .touchUpInside)
+        button3.addTarget(self, action: #selector(showSuccessAlert), for: .touchUpInside)
+        button4.addTarget(self, action: #selector(showErrorAlert)  , for: .touchUpInside)
     }
     
     /// Adds the buttons to the view and sets the constraints to them
@@ -70,7 +71,7 @@ class ViewController: UIViewController {
             button1.heightAnchor.constraint(equalToConstant: 32),
             button1.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant:60),
             button1.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            button1.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/1.5),
+            button1.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/1),
 
             button2.widthAnchor  .constraint(equalTo: button1.widthAnchor),
             button2.heightAnchor .constraint(equalTo: button1.heightAnchor),
@@ -108,6 +109,5 @@ class ViewController: UIViewController {
     @objc private func showErrorAlert(){
         JonAlert.showError(message: "Displaying error alert...")
     }
-
 }
 
