@@ -72,7 +72,7 @@ Select the top level of your project node to open the project editor. Click the 
 
 Scroll down to the Embedded Binaries section. Drag JonAlert.framework from the Products folder of JonAlert.xcodeproj onto this section.
 
-You should be good to go now!
+Clean and rebuild the project and you should be good to go!
 
 Collaboration
 ---
