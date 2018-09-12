@@ -7,9 +7,6 @@ A simple and elegant alert like Spotify's one, written in Swift. JonAlert can be
 
 ![Gif](https://thumbs.gfycat.com/MilkyCompleteIberianbarbel-small.gif)
 
-Easy to use
-----
-
 ### How to use
 
 ```swift
