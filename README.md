@@ -5,7 +5,7 @@ JonAlert
 
 A simple and elegant alert like Spotify's one, written in Swift. JonAlert can be used to give feedbacks to the user after he/she performed some action.
 
-![Gif](https://thumbs.gfycat.com/MilkyCompleteIberianbarbel-small.gif)
+![Gif](https://github.com/jonSurrey/JonAlert/blob/master/jonalert.gif?raw=true)
 
 ### How to use
 
