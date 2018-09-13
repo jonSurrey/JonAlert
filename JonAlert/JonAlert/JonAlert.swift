@@ -14,8 +14,8 @@ open class JonAlert:UIView{
     /// The box that holds the displayed views
     private let wrapper: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.init(hexString: "#AA000000")
         view.cornerRadius = 10
+        view.backgroundColor = UIColor.init(hexString: "#AA000000")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -23,7 +23,6 @@ open class JonAlert:UIView{
     /// The icon of the alert
     private let icon:UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -79,8 +78,8 @@ open class JonAlert:UIView{
         
         wrapper.addSubview(icon)
         NSLayoutConstraint.activate([
-            icon.widthAnchor  .constraint(equalToConstant: 32),
-            icon.heightAnchor .constraint(equalToConstant: 32),
+            icon.widthAnchor  .constraint(equalToConstant: 25),
+            icon.heightAnchor .constraint(equalToConstant: 25),
             icon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             icon.topAnchor    .constraint(equalTo: wrapper.topAnchor, constant: 20),
             
@@ -119,11 +118,12 @@ open class JonAlert:UIView{
         window.addSubview(alert)
         
         /// Animates the alert to show and disappear from the view
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
             alert.alpha = 1.0
         }, completion: { _ in
-            UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: duration, options: .curveEaseOut, animations: {
                 alert.alpha = 0.0
+                alert.frame.origin.y = alert.frame.origin.y + 50
             }, completion: { _ in
                 alert.removeFromSuperview()
             })

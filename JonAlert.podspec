@@ -6,12 +6,12 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/jonSurrey/JonAlert"
   s.screenshots  = "https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_single_message.png", "https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_success.png", "https://raw.githubusercontent.com/jonSurrey/JonAlert/master/alert_error.png"
   s.license = { :type => "MIT", :file => "LICENSE" }
-  s.author             = { "Jonathan Martins" => "jon.martinsu@gamil.com" }
+  s.author  = { "Jonathan Martins" => "jon.martinsu@gamil.com" }
   s.platform     = :ios
   s.ios.deployment_target = "9.0"
   s.source       = { :git => "https://github.com/jonSurrey/JonAlert.git", :tag => "#{s.version}"}
   s.source_files  = "JonAlert/JonAlert/**/*.{swift}"
-s.swift_version = "4.0" 
+s.swift_version = "4.1" 
 s.resources = "JonAlert/JonAlert/*.xcassets"
 s.requires_arc = true
 

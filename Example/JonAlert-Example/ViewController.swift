@@ -69,7 +69,7 @@ class ViewController: UIViewController{
 
         NSLayoutConstraint.activate([
             button1.heightAnchor.constraint(equalToConstant: 32),
-            button1.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant:60),
+            button1.topAnchor.constraint(equalTo: self.view.topAnchor, constant:60),
             button1.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             button1.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/1),
 
