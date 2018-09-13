@@ -50,7 +50,7 @@ Installation
 
 ### CocoaPods
 
-To integrate JonAlert into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate JonAlert to your project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 target '<Your Target Name>' do
