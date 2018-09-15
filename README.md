@@ -54,7 +54,7 @@ To integrate JonAlert to your project using CocoaPods, specify it in your `Podfi
 
 ```ruby
 target '<Your Target Name>' do
-    pod 'JonAlert', '~> 1.0'
+    pod 'JonAlert', :git => 'https://github.com/jonSurrey/JonAlert.git', :branch => 'master'
 end
 ```
 
