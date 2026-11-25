@@ -1,12 +1,8 @@
 import UIKit
 
 /// A short message, with an optional icon, that appears in the middle of the screen and fades away.
-///
-/// ```swift
-/// await FeedbackAlert("Saved", icon: .success).show(in: view)
-/// ```
-public struct FeedbackAlert: Identifiable {
-    public enum Icon {
+public struct FeedbackAlert: Identifiable, Sendable {
+    public enum Icon: Sendable {
         case success
         case error
         /// Shown in its own colors unless its rendering mode is `.alwaysTemplate`.
@@ -25,11 +21,7 @@ public struct FeedbackAlert: Identifiable {
         self.duration = duration
     }
 
-    /// Shows the alert in the window of `view` and returns once it has disappeared.
-    ///
-    /// Alerts show one at a time, in the order they were requested. Cancelling the task
-    /// removes a waiting alert or dismisses the visible one. Nothing is shown if `view`
-    /// isn't in a window when the alert's turn comes.
+    /// Waits its turn, shows in the window of `view`, and returns once gone; cancelling removes or dismisses it.
     @MainActor
     public func show(in view: UIView) async {
         await AlertPresenter.shared.show(self, in: view)
