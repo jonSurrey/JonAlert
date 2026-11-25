@@ -6,7 +6,7 @@ struct AlertQueueTests {
         let id: Int
     }
 
-    private func queue(enqueuing ids: ClosedRange<Int>) -> AlertQueue<Alert> {
+    private func makeQueue(enqueuing ids: ClosedRange<Int>) -> AlertQueue<Alert> {
         var queue = AlertQueue<Alert>()
         for id in ids {
             _ = queue.enqueue(Alert(id: id))
@@ -25,7 +25,7 @@ struct AlertQueueTests {
 
     @Test("An alert queued while another is showing waits its turn")
     func alertWaitsWhileAnotherShows() {
-        var queue = queue(enqueuing: 1...1)
+        var queue = makeQueue(enqueuing: 1...1)
         let showsNow = queue.enqueue(Alert(id: 2))
         #expect(!showsNow)
         #expect(queue.waiting == [Alert(id: 2)])
@@ -33,7 +33,7 @@ struct AlertQueueTests {
 
     @Test("Waiting alerts get their turn in the order they were queued")
     func waitingAlertsShowInOrder() {
-        var queue = queue(enqueuing: 1...3)
+        var queue = makeQueue(enqueuing: 1...3)
         let second = queue.finishShowing()
         let third = queue.finishShowing()
         #expect(second == Alert(id: 2))
@@ -42,7 +42,7 @@ struct AlertQueueTests {
 
     @Test("Finishing the last alert leaves nothing showing")
     func finishingLastAlertEmptiesQueue() {
-        var queue = queue(enqueuing: 1...1)
+        var queue = makeQueue(enqueuing: 1...1)
         let next = queue.finishShowing()
         #expect(next == nil)
         #expect(!queue.isShowing)
@@ -50,7 +50,7 @@ struct AlertQueueTests {
 
     @Test("Once nothing is showing, the next alert shows right away")
     func alertShowsRightAwayAfterQueueEmpties() {
-        var queue = queue(enqueuing: 1...1)
+        var queue = makeQueue(enqueuing: 1...1)
         _ = queue.finishShowing()
         let showsNow = queue.enqueue(Alert(id: 2))
         #expect(showsNow)
@@ -58,7 +58,7 @@ struct AlertQueueTests {
 
     @Test("A removed waiting alert never gets a turn")
     func removedAlertNeverShows() {
-        var queue = queue(enqueuing: 1...3)
+        var queue = makeQueue(enqueuing: 1...3)
         let removed = queue.removeWaiting(id: 2)
         let next = queue.finishShowing()
         #expect(removed == Alert(id: 2))
@@ -67,7 +67,7 @@ struct AlertQueueTests {
 
     @Test("Removing an alert that isn't waiting changes nothing")
     func removingAlertNotWaitingChangesNothing() {
-        var queue = queue(enqueuing: 1...2)
+        var queue = makeQueue(enqueuing: 1...2)
         let removedShowing = queue.removeWaiting(id: 1)
         let removedUnknown = queue.removeWaiting(id: 9)
         #expect(removedShowing == nil)
