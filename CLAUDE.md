@@ -8,7 +8,7 @@ How to work in this repository. Keep it lean.
 appears in the middle of the screen and fades away. A small, dependency-free Swift package with a
 UIKit API and a SwiftUI modifier.
 
-- Swift 6 language mode, strict concurrency. iOS 15+.
+- Swift 6 language mode, strict concurrency. iOS 16+.
 - Swift Package Manager only. No CocoaPods, Carthage, or Objective-C support.
 - Zero third-party dependencies. Ask before adding one.
 - One alert is visible at a time, app-wide. Others wait in order and are all shown.
