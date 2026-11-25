@@ -1,8 +1,8 @@
 import UIKit
 
 /// A short message, with an optional icon, that appears in the middle of the screen and fades away.
-public struct FeedbackAlert: Identifiable {
-    public enum Icon {
+public struct FeedbackAlert: Identifiable, Sendable {
+    public enum Icon: Sendable {
         case success
         case error
         /// Shown in its own colors unless its rendering mode is `.alwaysTemplate`.
