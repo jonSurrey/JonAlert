@@ -51,6 +51,8 @@ architecture — don't add layers, coordinators, view models, or folders on top 
 - No magic numbers. Sizes, spacings, and timings live in named constants.
 - Public API is minimal and deliberate: `public`, never `open`. Value types by default; `class` only
   where UIKit or shared state requires it.
+- Follow the Swift API Design Guidelines for naming (factory methods start with `make`). Public
+  value types declare `Sendable` when all their stored properties are.
 - Priority when these conflict: **Correctness → Simplicity → Readability → Performance.**
 
 ## Comments
@@ -65,7 +67,8 @@ non-obvious logic. One short line. Never:
 - leave commented-out code, TODOs without an owner, or ticket references
 - add doc comments to `internal`/`private` members just to have them
 
-Public API gets a brief doc comment only when usage isn't obvious from the signature.
+Public API gets a doc comment only when usage isn't obvious from the signature. It is one short
+line too; usage examples belong in the README.
 
 ## Testing
 
