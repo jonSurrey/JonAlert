@@ -1,88 +1,109 @@
-JonAlert
-===========
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-1.0.0-red.svg)](https://cocoapods.org/pods/JonAlert)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jonSurrey/JonAlert/blob/master/LICENSE)
+# JonAlert
 
-A simple and elegant alert like Spotify's one, written in Swift. JonAlert can be used to give feedbacks to the user after he/she performed some action.
+[![Swift 6](https://img.shields.io/badge/Swift-6-orange.svg)](https://swift.org)
+[![iOS 16+](https://img.shields.io/badge/iOS-16%2B-blue.svg)](https://developer.apple.com/ios/)
+[![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![Gif](https://media.giphy.com/media/c6OiUftAyORAsOflw6/giphy.gif)
+A feedback alert for iOS, in the style of Spotify's. A short message, with an optional icon, appears
+in the middle of the screen and fades away. Works with UIKit and SwiftUI.
 
-### How to use
+<img src="docs/demo.gif" width="320" alt="The example app shows each alert in turn: a message only, a success checkmark, an error cross, a custom pink heart, and a long message that wraps onto four lines.">
+
+- Alerts show one at a time. When several arrive together, they wait their turn instead of stacking.
+- `show(in:)` returns once the alert has disappeared, so you can act right after it.
+- VoiceOver reads the message aloud.
+- Respects Reduce Motion, Dynamic Type and dark mode.
+- No dependencies.
+
+## Installation
+
+In Xcode, choose **File → Add Package Dependencies…** and enter:
+
+```
+https://github.com/jonSurrey/JonAlert
+```
+
+Or add it to `Package.swift`:
 
 ```swift
-// First import the library to the ViewController you want to use it.
+.package(url: "https://github.com/jonSurrey/JonAlert", from: "2.0.0")
+```
+
+## Usage
+
+```swift
 import JonAlert
 
-// Then, you just have to call the alert anywhere you desire:
-JonAlert.show(message: "Simple message...")
+FeedbackAlert("Link copied")
+FeedbackAlert("Added to your library", icon: .success)
+FeedbackAlert("Couldn't connect", icon: .error)
+FeedbackAlert("Added to favorites", icon: .custom(heartImage))
+FeedbackAlert("Playlist saved", duration: .seconds(2))
 ```
 
-### Success and Error Alerts
+An alert stays fully visible for its `duration` (one second by default), plus a short fade in and out.
+A custom image keeps its own colors unless its rendering mode is `.alwaysTemplate`.
+
+### UIKit
 
 ```swift
-// If you want to show feedback for a success or error situation, 
-// you can simply call:
-JonAlert.showSuccess(message: "Success!!")
-JonAlert.showError(message: "Something went wrong...")
+Task {
+    await FeedbackAlert("Saved", icon: .success).show(in: view)
+}
 ```
 
-### Display a custom icon
+The alert appears in the window of the view you pass. Because `show(in:)` returns once the alert has
+gone, you can follow it with the next step:
 
 ```swift
-// Last but not least, you can use a custom image to be displayed:
-let myImage = UIImage(named: "myImage")
-JonAlert.show(message: "Simple message...", andIcon: myImage)
+Task {
+    await FeedbackAlert("Saved", icon: .success).show(in: view)
+    navigationController?.popViewController(animated: true)
+}
 ```
 
-### Changing the alert displaying speed
+Cancelling the task removes a waiting alert, or dismisses the visible one.
+
+### SwiftUI
 
 ```swift
-// The alert default displaying speed is 1 second. So, when you
-// call any of the "show" methods the time between the alert 
-// appearing and disappearing will be of 1 second. 
+@State private var alert: FeedbackAlert?
 
-// To change de default time (in seconds) of the alert, use: 
-JonAlert.show(message: "", duration: 5.0)
+var body: some View {
+    Button("Save") {
+        alert = FeedbackAlert("Saved", icon: .success)
+    }
+    .feedbackAlert(item: $alert)
+}
 ```
 
-Installation
----
+The binding goes back to `nil` once the alert has disappeared.
 
-### CocoaPods
+### Several alerts
 
-To integrate JonAlert to your project using CocoaPods, specify it in your `Podfile`:
+Alerts show one at a time across the whole app, in the order they were requested, and every one of
+them is shown.
 
-```ruby
-target '<Your Target Name>' do
-    pod 'JonAlert', :git => 'https://github.com/jonSurrey/JonAlert.git', :branch => 'master'
-end
-```
+## Example app
 
-Then, run the following command:
+Open `Example/Example.xcodeproj` and run the **Example** scheme. It shows the same alerts in UIKit and SwiftUI.
 
-```bash
-$ pod install
-```
+## Migrating from 1.x
 
-### Manual installation
-
-First download the "JonAlert" folder. Then, in Xcode, right-click on the root of your project node in the project navigator. Click "Add Files" to “YOURPROJECTNAME”. In the file chooser, navigate to where "Jon Alert" folder is and select JonAlert.xcodeproj. Click "Add" to add JonAlert.xcodeproj as a sub-project.
-
-Select the top level of your project node to open the project editor. Click the YOUR_PROJECT_NAME target, and then go to the General tab.
-
-Scroll down to the Embedded Binaries section. Drag JonAlert.framework from the Products folder of JonAlert.xcodeproj onto this section.
-
-Clean and rebuild the project and you should be good to go!
-
-Collaboration
----
-
-This is a simple libray that I created to help myself in my own work since I didnt find any other that would do what I wanted. I know that there is still here a lot of space for improvements and adding new features, so please, any ideas or issues, feel free to collaborate!
-
-## Author
-
-Jonathan Martins, jon.martinsu@gmail.com
+| 1.x | 2.0 |
+|---|---|
+| CocoaPods | Swift Package Manager |
+| iOS 9+ | iOS 16+ |
+| `JonAlert.show(message:)` | `FeedbackAlert(_:)` and `show(in:)` |
+| `JonAlert.show(message:andIcon:)` | `FeedbackAlert(_:icon: .custom(image))` |
+| `JonAlert.showSuccess(message:)` | `FeedbackAlert(_:icon: .success)` |
+| `JonAlert.showError(message:)` | `FeedbackAlert(_:icon: .error)` |
+| `duration: TimeInterval` | `duration: Duration`, such as `.seconds(2)` |
+| Shown on the key window | Shown in the window of the view you pass |
+| Alerts stack on top of each other | Alerts wait their turn |
+| No SwiftUI support | `.feedbackAlert(item:)` |
 
 ## License
 
-JonAlert is available under the MIT license. See the LICENSE file for more info.
+JonAlert is available under the MIT license. See [LICENSE](LICENSE).
