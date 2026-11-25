@@ -1,15 +1,7 @@
 import SwiftUI
 
 extension View {
-    /// Shows `alert` whenever it is set, in this view's window. Sets it back to `nil` once
-    /// that alert has disappeared.
-    ///
-    /// ```swift
-    /// @State private var alert: FeedbackAlert?
-    ///
-    /// Button("Save") { alert = FeedbackAlert("Saved", icon: .success) }
-    ///     .feedbackAlert(item: $alert)
-    /// ```
+    /// Shows `alert` in this view's window whenever it is set, then sets it back to `nil`.
     public func feedbackAlert(item alert: Binding<FeedbackAlert?>) -> some View {
         background(FeedbackAlertHost(alert: alert))
     }
