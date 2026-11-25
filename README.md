@@ -8,6 +8,8 @@
 A feedback alert for iOS, in the style of Spotify's. A short message, with an optional icon, appears
 in the middle of the screen and fades away. Works with UIKit and SwiftUI.
 
+<img src="docs/demo.gif" width="320" alt="The example app shows each alert in turn: a message only, a success checkmark, an error cross, a custom pink heart, and a long message that wraps onto four lines.">
+
 - Alerts show one at a time. When several arrive together, they wait their turn instead of stacking.
 - `show(in:)` returns once the alert has disappeared, so you can act right after it.
 - VoiceOver reads the message aloud.
