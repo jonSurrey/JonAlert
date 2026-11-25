@@ -1,4 +1,3 @@
-/// Lets one alert show at a time. The others wait in the order they arrived.
 struct AlertQueue<Item: Identifiable> {
     private(set) var isShowing = false
     private(set) var waiting: [Item] = []
