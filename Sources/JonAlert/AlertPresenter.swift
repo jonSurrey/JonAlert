@@ -23,7 +23,6 @@ final class AlertPresenter {
         await alertView.disappear()
     }
 
-    /// Returns `false` when the task is cancelled before its turn comes.
     private func waitForTurn() async -> Bool {
         let id = UUID()
         return await withTaskCancellationHandler {

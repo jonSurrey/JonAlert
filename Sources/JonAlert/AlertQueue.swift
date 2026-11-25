@@ -2,7 +2,6 @@ struct AlertQueue<Item: Identifiable> {
     private(set) var isShowing = false
     private(set) var waiting: [Item] = []
 
-    /// Returns `true` when the item can show right away. Otherwise it waits for its turn.
     mutating func enqueue(_ item: Item) -> Bool {
         if isShowing {
             waiting.append(item)
@@ -12,7 +11,6 @@ struct AlertQueue<Item: Identifiable> {
         return true
     }
 
-    /// Ends the visible alert and returns the item whose turn it is now, if any.
     mutating func finishShowing() -> Item? {
         guard !waiting.isEmpty else {
             isShowing = false
